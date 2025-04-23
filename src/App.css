@@ -1,0 +1,6 @@
+.mask-cutout {
+  mask-image: radial-gradient(circle 24px at center, transparent 0px, black 26px);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-position: center;
+}

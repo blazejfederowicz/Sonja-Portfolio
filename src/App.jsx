@@ -1,11 +1,11 @@
 import './App.css'
-import brand from "/brandIcon.svg"
+import Navbar from './components/Navbar'
 
 function App() {
 
   return (
     <>
-      <img src={brand} className='pb-92 opacity-15'/>
+      <Navbar/>
     </>
   )
 }

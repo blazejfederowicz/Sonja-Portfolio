@@ -1,9 +1,10 @@
 @import "tailwindcss";
+@import "bootstrap-icons/font/bootstrap-icons.css";
 
 @theme {
   --color-sea: #97B3AE;
   --color-pond: #D2E0D3;
-  --color-light: #F0DDD6;
+  --color-light-pink: #F0DDD6;
   --color-salmon: #f2C3B9;
   --color-wood-brown: #D6CBBF;
   --color-gray-sky: #F0EEEA;
