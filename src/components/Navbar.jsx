@@ -1,16 +1,45 @@
 import brand from "/brandIcon.svg"
+import { Reveal } from "../utils/Reveal"
+import { useEffect, useState } from "react"
+import { useAnimation, motion, easeIn } from "motion/react";
 
 export default function Navbar(){
+    const [ navLink, setNavLink] = useState(false);
+    const controls = useAnimation()
+
+    useEffect(()=>{
+        if(navLink){
+            controls.start("visible")
+        }
+    }, [navLink])
 
     return(<>
         <div className="w-full bg-gray-500 h-[4em]">
             <div className="container px-2 py-3 h-full flex justify-between items-center mx-auto">
-                <img src={brand} className="h-full"  alt="brand"/>
-                <div className="h-full flex items-center gap-6">
-                    <div className="hidden">
+                <Reveal>
+                    <img src={brand} className="h-full"  alt="brand"/>
+                </Reveal>
+                <Reveal>
+                    <div className="h-full flex items-center gap-6">
+                    <motion.div
+                        className="overflow-hidden relative -z-10"
+                        initial="hidden"
+                        animate={controls}
+                        variants={{
+                            visible:{opacity:1, x:0},
+                            hidden:{opacity:0, x:"100px"}
+                        }}
 
-                    </div>
-                    <div className="nav-links">
+                        transition={[easeIn]}
+                    >
+                        <ol className="">
+                            <li className="inline">Home</li>
+                            <li className="inline ms-3">About</li>
+                            <li className="inline ms-3">Events</li>
+                            <li className="inline ms-3">Projects</li>
+                        </ol>
+                    </motion.div>
+                    <div className="nav-links cursor-pointer" onClick={()=>setNavLink(prev=> !prev)}>
                         <div className="w-[3em] h-[4px] bg-light-pink mb-1"></div>
                         <div className="w-[2em] ms-auto h-[4px] bg-light-pink "></div>
                     </div>
@@ -39,7 +68,8 @@ export default function Navbar(){
                     254 -267 470 -521 535 -102 26 -261 26 -362 0z"/>
                     </g>
                     </svg>
-                </div>
+                    </div>
+                </Reveal>
             </div>
         </div>
     </>)
