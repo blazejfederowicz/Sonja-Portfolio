@@ -1,6 +1,20 @@
-.mask-cutout {
-  mask-image: radial-gradient(circle 24px at center, transparent 0px, black 26px);
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
-  mask-position: center;
+.animLink{
+  position: relative;
+  overflow: hidden;
+}
+
+.animLink::after{
+  content: "";
+  display: block;
+  background-color: var(--color-salmon);
+  left: 0;
+  width: 0%;
+  height: 3px;
+  /* transform: scaleX(0); */
+  transition: 250ms ease-in-out;
+}
+
+.animLink:hover::after{
+  width: 100%;
+  transform: translateX(101%);
 }

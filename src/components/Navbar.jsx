@@ -44,11 +44,13 @@ export default function Navbar(){
         };
     
         window.addEventListener("scroll", handleScroll);
+        
         return () => window.removeEventListener("scroll", handleScroll);
       }, []);
 
+
     return(<>
-        <nav ref={ref} className={`fixed top-0 inset-x-0 z-[1000] duration-300 overflow-hidden ${
+        <nav ref={ref} className={`fixed top-0 inset-x-0 z-[100] duration-300 overflow-hidden ${
         isScrolled || showMenu ? "bg-neutral-100/35 backdrop-blur-xs shadow-lg " : "bg-transparent "
       } ${isScrolled?"py-4":"py-5"} ${navLink && window.innerWidth<641 ? "max-h-[400px]" : "max-h-[80px]"}`}>
             <div className="container px-2 h-full flex justify-between items-center mx-auto">
@@ -58,38 +60,38 @@ export default function Navbar(){
                     </Link>
                 </Reveal>
                 <Reveal>
-                    <div className="h-full w-full flex items-center gap-6">
-                    <div className="overflow-hidden w-full hidden sm:block">
-                        <motion.ol
-                            className="text-sm w-full lg:text-base flex justify-between"
-                            initial="hidden"
-                            animate={controls}
-                            variants={{
-                                visible:{opacity:1, x:0},
-                                hidden:{opacity:0, x:"100px"}
-                            }}
+                    <div className="h-full custom-width flex items-center gap-6">
+                        <div className="overflow-hidden w-full hidden sm:block">
+                            <motion.ol
+                                className="text-sm w-full lg:text-base flex justify-between"
+                                initial="hidden"
+                                animate={controls}
+                                variants={{
+                                    visible:{opacity:1, x:0},
+                                    hidden:{opacity:0, x:"100px"}
+                                }}
 
-                            transition={[easeIn]}
-                        >
-                            <li className=" opacity-80 px-2 tracking-widest cursor-pointer">
-                                <NavLink  to="/" className="hover:font-semibold duration-150 ease-in-out active:font-semibold">Home</NavLink>
-                            </li>
-                            <li className={` duration-300 ${navLink?'px-2 ease-in delay-75':'ps-1 ease-out'} opacity-80 tracking-widest`}>
-                                <a href="#about" className="hover:font-semibold duration-150 ease-in-out active:font-semibold">About</a>
-                            </li>
-                            <li className={` duration-300 ${navLink?'px-2 ease-in delay-[50ms]':'ps-1 ease-out'} opacity-80 tracking-widest`}>
-                                <a href="#events" className="hover:font-semibold duration-150 ease-in-out active:font-semibold">Events</a>
-                            </li>
-                            <li className={`duration-300 ${navLink?'px-2 ease-in delay-[25ms]':'ps-1 ease-out'} opacity-80 tracking-widest`}>
-                                <a href="#projects" className="hover:font-semibold duration-150 ease-in-out active:font-semibold">Projects</a>
-                            </li>
-                            <li className={`duration-300 ${navLink?'px-2 ease-in delay-[25ms]':'ps-1 ease-out'} opacity-80 tracking-widest`}>
-                                <NavLink to="/contact" className="hover:font-semibold duration-150 ease-in-out active:font-semibold">Contact</NavLink>
-                            </li>
-                        </motion.ol>
-                    </div>
-                    
-                    <div className="nav-links order-1 sm:order-0 group relative cursor-pointer" onClick={()=>setNavLink(prev=> !prev)}>
+                                transition={[easeIn]}
+                            >
+                                <li className="flex justify-center lg:w-[52px] w-[48px] opacity-80 mx-2 overflow-hidden tracking-widest cursor-pointer">
+                                    <NavLink  to="/" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Home</NavLink>
+                                </li>
+                                <li className={`lg:w-[55px] w-[49px] flex justify-center overflow-hidden duration-300 ${navLink?'mx-2 ease-in delay-75':'ms-1 ease-out'} opacity-80 tracking-widest`}>
+                                    <a href="#about" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">About</a>
+                                </li>
+                                <li className={`lg:w-[62px] w-[53px] flex justify-center duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[50ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
+                                    <a href="#events" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Events</a>
+                                </li>
+                                <li className={`flex justify-center w-[65px] lg:w-[75px] duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[25ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
+                                    <a href="#projects" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Projects</a>
+                                </li>
+                                <li className={`flex justify-center lg:w-[72px] w-[62px] duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[25ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
+                                    <NavLink to="/contact" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Contact</NavLink>
+                                </li>
+                            </motion.ol>
+                        </div>
+                        
+                        <div className="nav-links order-1 sm:order-0 group relative cursor-pointer" onClick={()=>setNavLink(prev=> !prev)}>
                         <motion.div className="ease-in-out transition-[filter] duration-150 group-hover:brightness-105 group-active:brightness-105 h-[4px] bg-light-pink mb-1"
                             initial="off"
                             animate={navLink?"on":"off"}

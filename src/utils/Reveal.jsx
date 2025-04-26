@@ -16,7 +16,7 @@ export const Reveal = ({children, customStyle})=>{
     return(
         <div ref={ref} className={styles}>
             <motion.div
-                className='w-fit h-full'
+                className='h-full'
                 initial="hidden"
                 animate={controls}
                 transition={{ 
