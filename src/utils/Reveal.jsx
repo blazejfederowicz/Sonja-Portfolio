@@ -21,7 +21,7 @@ export const Reveal = ({children, customStyle})=>{
                 animate={controls}
                 transition={{ 
                     duration: 0.8,
-                    ease: [0, 0.71, 0.2, 1.01],}}
+                    ease: [0, 0.41, 0.2, 1.01],}}
                 variants={{
                     visible:{opacity:1,transform:"translateX(0px)"},
                     hidden:{opacity:0,transform:"translateX(-100px)"}

@@ -1,5 +1,25 @@
 @import "tailwindcss";
 @import "bootstrap-icons/font/bootstrap-icons.css";
+@font-face {
+  font-family: "Alta";
+  src: url("./assets/fonts/Alta_Typeface/Alta_light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alta";
+  src: url("./assets/fonts/Alta_Typeface/Alta_regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alta";
+  src: url("./assets/fonts/Alta_Typeface/Alta_caption.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
 
 @theme {
   --color-sea: #97B3AE;
@@ -8,4 +28,6 @@
   --color-salmon: #f2C3B9;
   --color-wood-brown: #D6CBBF;
   --color-gray-sky: #F0EEEA;
+  --font-alta: Alta, serif;
+  --font-raleway: "Raleway", sans-serif;
 }
