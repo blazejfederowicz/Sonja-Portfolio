@@ -1,8 +1,9 @@
 import {easeInOut, motion} from 'motion/react'
+import video from '../assets/videos/play.mp4'
 
 
 export default function LoadingScreen(){
-    const pathVariants = {
+    const pathVariantsStrokes = {
         hidden:{ 
             pathLength:0
         },
@@ -15,28 +16,42 @@ export default function LoadingScreen(){
         }
     }
 
+    const pathVariantsWidth = {
+        hidden:{ 
+            opacity:0
+        },
+        visible: {
+            opacity: "100%",
+            transition: {
+                duration: 0.5,
+                ease: "easeIn",
+              },
+        }
+    }
+
 
     return(<>
-        <motion.div className={`absolute overflow-hidden z-[1000] inset-0 bg-gray-500`}
+        <motion.div className={`absolute overflow-hidden z-[1000] inset-0 bg-white`}
             initial={{y:"0%"}}
             variants = {{
                 show:{y:0},
-                hide:{y:"-100%"}
+                hide:{y:"-100%",transition:{duration:.7}}
             }}
             animate="show"
             exit="hide"
             transition={[easeInOut]}
         >
-            <svg version="1.0" className='absolute top-1/2 left-1/2 -translate-1/2' xmlns="http://www.w3.org/2000/svg"
+            <video src={video} className='w-full h-full object-cover object-center brightness-75' autoPlay loop muted/>
+            <motion.svg version="1.0" className='absolute top-1/2 left-1/2 -translate-1/2 w-full' xmlns="http://www.w3.org/2000/svg"
             width="454.000000pt" height="467.000000pt" viewBox="0 0 454.000000 467.000000"
             preserveAspectRatio="xMidYMid meet">
 
-            <g transform="translate(0.000000,467.000000) scale(0.100000,-0.100000)"
+            <motion.g transform="translate(0.000000,467.000000) scale(0.100000,-0.100000)"
             fill="#fff" stroke="none">
             <motion.path
-            variants={pathVariants}
-            initial="hidden"
-            animate="visible"
+            variants={pathVariantsWidth}
+            initial={{pathLength:0}}
+            whileInView="visible"
             
             d="M2164 4566 c-64 -36 -2030 -1790 -2037 -1817 -8 -30 12 -70 43 -86
             36 -19 4153 -19 4190 0 13 7 31 25 40 40 13 24 13 30 0 55 -9 15 -138 136
@@ -44,7 +59,15 @@ export default function LoadingScreen(){
             -13 -73 -14 -161 l-3 -149 -510 454 c-280 250 -526 462 -547 472 -54 25 -143
             23 -194 -7z"
             />
-            <path d="M177 2363 c-4 -3 -7 -498 -7 -1098 0 -902 2 -1094 13 -1104 8 -6 17
+            <motion.path 
+            initial="hidden"
+            whileInView="visible"
+            variants={pathVariantsStrokes}
+            stroke="white"
+            strokeWidth="10"
+            fill="none"
+            strokeDasharray="0 1"
+            d="M177 2363 c-4 -3 -7 -498 -7 -1098 0 -902 2 -1094 13 -1104 8 -6 17
             -8 20 -4 4 3 7 503 7 1110 0 912 -2 1103 -13 1103 -8 0 -17 -3 -20 -7z"/>
             <path d="M4320 1266 c0 -1100 0 -1106 20 -1106 20 0 20 5 18 1102 -3 1041 -4
             1103 -20 1106 -17 3 -18 -55 -18 -1102z"/>
@@ -353,8 +376,8 @@ export default function LoadingScreen(){
             -13 0 -20 -7 -20 -20z"/>
             <path d="M557 40 c-196 -3 -357 -8 -357 -12 0 -5 0 -12 0 -18 0 -15 4126 -14
             4136 1 3 6 2 15 -3 20 -10 10 -3173 17 -3776 9z"/>
-            </g>
-            </svg>
+            </motion.g>
+            </motion.svg>
 
         </motion.div>
     </>);

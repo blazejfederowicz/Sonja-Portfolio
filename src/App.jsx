@@ -8,6 +8,7 @@ import { AnimatePresence } from 'motion/react'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+  const location = useLocation()
 
   useEffect(()=>{
     setIsLoading(true);
@@ -27,7 +28,7 @@ function App() {
   return (
     <>
     <AnimatePresence onExitComplete={handleExitComplete}>
-      {true&& <LoadingScreen bool={true}/>}
+      {isLoading&& <LoadingScreen bool={isLoading}/>}
     </AnimatePresence>
     <Routes>
       <Route path='/' element={<Home/>}/>
