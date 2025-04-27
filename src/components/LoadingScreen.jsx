@@ -31,7 +31,7 @@ export default function LoadingScreen(){
 
 
     return(<>
-        <motion.div className={`absolute overflow-hidden z-[1000] inset-0 bg-white`}
+        <motion.div className={`fixed overflow-hidden z-[1000] bottom-0 inset-0 bg-white`}
             initial={{y:"0%"}}
             variants = {{
                 show:{y:0},
