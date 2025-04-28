@@ -55,8 +55,9 @@ export default function Navbar(){
       } ${isScrolled?"py-4":"py-5"} ${navLink && window.innerWidth<641 ? "max-h-[400px]" : "max-h-[80px]"}`}>
             <div className="container px-2 h-full flex justify-between items-center mx-auto">
                 <Reveal>
-                    <Link to="/">
+                    <Link to="/" className="flex gap-5">
                         <img src={brand} className="h-[2.5em]"  alt="brand"/>
+                        <p className="mt-3 font-alta text-[#525351]">Baroque</p>
                     </Link>
                 </Reveal>
                 <Reveal>

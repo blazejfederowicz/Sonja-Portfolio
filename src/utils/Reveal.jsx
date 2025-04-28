@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 export const Reveal = ({children, customStyle})=>{
     const ref = useRef(null)
     const view = useInView(ref,{once:true})
-    const [styles, setStyles]= useState(`h-full ${customStyle}`)
+    const [styles, setStyles]= useState(`${customStyle}`)
     const controls = useAnimation()
 
     useEffect(()=>{
