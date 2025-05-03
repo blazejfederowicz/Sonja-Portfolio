@@ -1,8 +1,10 @@
 import Marquee from "./Marquee";
-import {Reveal} from '../utils/Reveal'
-import {motion} from 'motion/react'
+import {Reveal} from '../utils/Reveal';
+import {motion} from 'motion/react';
 import { useRef, useState } from "react";
 import pdf from '../assets/CV.pdf'
+import bigBen from '../assets/images/bigBen.png'
+import arch from '../assets/images/arch.png'
 
 export default function Hero(){
     const [buttonSlide, setButtonSlide] = useState(false);
@@ -17,7 +19,7 @@ export default function Hero(){
     
     return(<>
         <section className="h-lvh flex flex-col pt-[80px]">
-            <div className="w-full relative my-auto grow grid grid-rows-3 max-h-[200px] sm:max-h-[300px] md:max-h-[400px] grid-cols-2 gap-[1em] md:gap-[2em] container mx-auto px-2">
+            <div className="w-full relative my-auto grow grid grid-rows-3 max-h-[200px] sm:max-h-[300px] md:max-h-[400px] grid-cols-[repeat(3,auto)] gap-[1em] md:gap-[2em] container mx-auto px-2">
                 <p className="font-alta absolute rotate-90 -left-5 top-50 -z-50 -translate-y-1/2 hidden lg:block text-sm text-black/50">structure</p>
                 <p className="font-alta absolute -rotate-90 -right-5 top-50 -z-50  hidden lg:block text-sm text-black/50">blueprint</p>
                 <div className="absolute left-2 -bottom-0 -z-50 translate-y-1/2 flex-row-reverse gap-[1em] hidden lg:flex items-center">
@@ -29,6 +31,9 @@ export default function Hero(){
                 </div>
                 <div className=" flex items-center">
                     <h1 className="font-alta font-light tracking-widest small text-5xl sm:text-6xl md:text-7xl">Pengili</h1>
+                </div>
+                <div className="row-span-2">
+                    <img src={bigBen} className="block" alt="bigBen"/>
                 </div>
                 <div className="flex sm:gap-8 gap-2 md:gap-4 xl:gap-8 justify-center col-span-2 md:col-span-1  items-center">
                     <Reveal>
@@ -61,6 +66,9 @@ export default function Hero(){
                         <div className="pointer-events-none absolute inset-px duration-150 ease-in-out rounded-4xl ring-1 group-hover:ring-wood-brown/30 shadow-sm ring-wood-brown/50"></div>
                     </a>
                 </Reveal>
+                </div>
+                <div className="" style={{gridArea:"3/3/3/3"}}>
+                    <img src={arch} className="block"/>
                 </div>
             </div>
             <Marquee/>
