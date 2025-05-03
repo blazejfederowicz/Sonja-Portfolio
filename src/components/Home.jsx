@@ -7,7 +7,7 @@ export default function Home(){
 
     return(
         <>
-            <header className="h-lvh relative" style={{background:`url(${bg})`}}>
+            <header className="h-lvh relative bg-no-repeat bg-cover" style={{background:`url(${bg})`}}>
                 <div className="absolute inset-0 top-0 bg-white/70"></div>
                 <Navbar/>
                 <Hero/>
