@@ -51,6 +51,17 @@
   grid-row: 4/5
 }
 
+.after::after{
+  content: "";
+  display: block;
+  height: 2px;
+  width: 15em;
+  background-color: var(--color-light-pink);
+  position: absolute;
+  left: 100%;
+  top:50%;
+  transform: translateY(-50%);
+}
 
 @media (max-width:380px){
   .small{
