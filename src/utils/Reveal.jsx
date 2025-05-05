@@ -1,7 +1,7 @@
 import {motion,useAnimation,useInView} from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
-export const Reveal = ({children, customStyle})=>{
+export const Reveal = ({children, customStyle, delay, start})=>{
     const ref = useRef(null)
     const view = useInView(ref,{once:true})
     const [styles, setStyles]= useState(`${customStyle}`)
@@ -21,7 +21,9 @@ export const Reveal = ({children, customStyle})=>{
                 animate={controls}
                 transition={{ 
                     duration: 0.8,
-                    ease: [0, 0.41, 0.2, 1.01],}}
+                    ease: [0, 0.41, 0.3, 1.01],
+                    delay:delay?delay:0.2
+                }}
                 variants={{
                     visible:{opacity:1,transform:"translateX(0px)"},
                     hidden:{opacity:0,transform:"translateX(-100px)"}

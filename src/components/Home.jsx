@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import About from "./About";
 import Hero from "./Hero";
 import bg from '../assets/images/bg.jpg'
+import Events from "./Events";
 
 export default function Home(){
 
@@ -14,6 +15,7 @@ export default function Home(){
             </header>
             <main className="h-lvh">
                 <About/>
+                <Events/>
             </main>
         </>
     )
