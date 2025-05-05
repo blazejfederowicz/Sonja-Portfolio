@@ -3,6 +3,7 @@ import About from "./About";
 import Hero from "./Hero";
 import bg from '../assets/images/bg.jpg'
 import Events from "./Events";
+import Projects from "./Projects";
 
 export default function Home(){
 
@@ -16,6 +17,7 @@ export default function Home(){
             <main className="h-lvh">
                 <About/>
                 <Events/>
+                <Projects/>
             </main>
         </>
     )
