@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import {motion, useScroll, useTransform} from 'motion/react'
 import { Reveal } from '../utils/Reveal';
 import image1 from '../assets/images/image1.png'
 import image2 from '../assets/images/image2.png'
@@ -7,6 +8,18 @@ import image2 from '../assets/images/image2.png'
 export default function Events(){
     const ref = useRef(null)
     const [height, setHeight] = useState(0)
+    const exebitionRef = useRef(null)
+    const {scrollYProgress} = useScroll({
+        target:exebitionRef,
+        offset:["start end","end end"]
+    });
+    const smallScreenProgressBar = useScroll({
+        target:exebitionRef,
+        offset:["start start","end 20%"]
+    }).scrollYProgress
+    const radius = 90;
+    const circumference = 2*Math.PI *radius
+    const stroke = useTransform(scrollYProgress,[0,1],[circumference,0])
 
     useEffect(()=>{
 
@@ -37,19 +50,42 @@ export default function Events(){
             message:"Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo ",
             src: image2
         },
+        {
+            sideText:"Dolor sit amet",
+            title:"Dolor sit amet consectetur adipiscing",
+            message:"Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo ",
+            src: image1
+        },
     ]
 
     return(
         <>
-            <section id='events' className="container px-2 mx-auto pt-44">
-                <div className="flex">
+            <section id='events' className="pt-44">
+                <div className="flex container px-2 mx-auto">
                     <Reveal>
                     <h2 className="font-alta text-4xl tracking-widest text-gray-600">Events<span className="tracking-tight">||</span></h2>
                     </Reveal>
                 </div>
-                <div className="grid gap-[2em] lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] mt-10">
+                <div className="h-[2em] w-full bg-white mt-5 sticky top-18 lg:hidden z-30 flex items-center">
+                    <motion.div className="h-[1em] w-full bg-pond" style={{originX:0, scaleX:smallScreenProgressBar}}/>
+                </div>
+                <div ref={exebitionRef} className="grid gap-[2em] lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] mt-5 lg:mt-10 container px-2 mx-auto ">
                     <div className="">
-                        <div className="h-full w-0 border-dashed mx-auto border-2 border-salmon2"></div>
+                        <div className="h-full w-0 border-dashed mx-auto border-2 border-salmon2 hidden lg:block ">
+                            <div className="lg:flex w-[10em] sticky top-[85%] items-center">
+                            <i className="bi bi-caret-left-fill flex text-salmon2 text-4xl "></i>
+                            <motion.svg xmlns="http://www.w3.org/2000/svg" className="fill-transparent w-[5em] stroke-salmon2" viewBox="0 0 230 230">
+                            <motion.ellipse 
+                                strokeWidth="25" 
+                                strokeDasharray={circumference} 
+                                strokeDashoffset={circumference} 
+                                cx="115" cy="115" rx={radius} ry={radius}
+                                style={{strokeDashoffset:stroke}}
+                            />
+                            </motion.svg>
+                            </div>
+                        
+                        </div>
                     </div>
                     <div className="">
                         {
