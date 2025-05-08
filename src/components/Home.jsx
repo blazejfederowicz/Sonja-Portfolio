@@ -14,7 +14,7 @@ export default function Home(){
                 <Navbar/>
                 <Hero/>
             </header>
-            <main className="h-lvh">
+            <main >
                 <About/>
                 <Events/>
                 <Projects/>
