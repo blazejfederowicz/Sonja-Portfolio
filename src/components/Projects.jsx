@@ -7,9 +7,10 @@ import {motion, useAnimation} from 'motion/react'
 
 export default function Projects(){
     const [screenWidth, setScreenWidth] = useState(0)
+    const [hoverAnim, setHoverAnim] = useState(true)
     const controls = useAnimation()
 
-    const handlePageTransition = ()=> controls.start("end")
+    const handlePageTransition = ()=> controls.start("middle").then(()=> controls.start('end'))
 
     const projectsArr = [
         {
@@ -57,13 +58,17 @@ export default function Projects(){
                     <div className="flex w-full flex-col gap-[1em]">
                     {projectsArr.filter((_,i)=> i%2===0).map((e,i)=>(
                         
-                            <motion.div onClick={handlePageTransition} key={i} className="cursor-pointer text-white bg-center bg-no-repeat bg-cover transition-[transform_box-shadow] duration-400 ease-out hover:shadow-2xl hover:scale-95" 
+                            <motion.div onClick={handlePageTransition} key={i} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer transition-[transform_box-shadow] duration-400 ease-out hover:shadow-2xl hover:scale-95`:''}`} 
                                 style={{backgroundImage:`url(${e.src})`}}
                                 initial="start"
+                                onAnimationStart={()=> setHoverAnim(false)}
                                 animate={controls}
                                 variants={{
                                     start:{width:"100%",height:e.height, position:"static"},
-                                    end:{ position:"fixed", z:1000, top:0, left:0, bottom:0}
+                                    middle:{scale:2, transition:{
+                                        duration: 1
+                                    },},
+                                    end:{ position:"fixed", height:"100%", zIndex:1000, top:0, left:0, bottom:0},
                                 }}
                             />
                        
