@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import LoadingScreen from './components/LoadingScreen'
 import Contact from './components/Contact'
 import { AnimatePresence } from 'motion/react'
+import Project1 from './components/Projects/Project1'
+import NotFound from './components/NotFound'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -27,12 +29,15 @@ function App() {
 
   return (
     <>
-    <AnimatePresence onExitComplete={handleExitComplete}>
+    <AnimatePresence mode='wait' onExitComplete={handleExitComplete}>
       {isLoading&& <LoadingScreen bool={isLoading}/>}
     </AnimatePresence>
-    <Routes>
+
+    <Routes location={location} key={location.pathname}>
       <Route path='/' element={<Home/>}/>
       <Route path='/contact' element={<Contact/>}/>
+      <Route path='/project1' element={<Project1/>}/>
+      <Route path="*" element={<NotFound/>} />
     </Routes>
     </>
   )
