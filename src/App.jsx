@@ -7,6 +7,7 @@ import Contact from './components/Contact'
 import { AnimatePresence } from 'motion/react'
 import Project from './components/Projects/Project'
 import NotFound from './components/NotFound'
+import { ProjectProvider } from './utils/ProjectContext'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -34,12 +35,14 @@ function App() {
       {isLoading&& <LoadingScreen bool={isLoading}/>}
     </AnimatePresence>
 
-    <Routes location={location} key={location.pathname}>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/contact' element={<Contact/>}/>
-      <Route path='/project/:id' element={<Project/>}/>
-      <Route path="*" element={<NotFound/>} />
-    </Routes>
+    <ProjectProvider>
+      <Routes location={location} key={location.pathname}>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/project/:id' element={<Project/>}/>
+        <Route path="*" element={<NotFound/>} />
+      </Routes>
+    </ProjectProvider>
     </>
   )
 }
