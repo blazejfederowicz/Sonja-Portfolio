@@ -4,8 +4,13 @@ import Hero from "./Hero";
 import bg from '../assets/images/bg.jpg'
 import Events from "./Events";
 import Projects from "./Projects";
+import { useEffect } from "react";
 
 export default function Home(){
+
+    useEffect(()=>{
+        document.body.classList.remove("overflow-hidden")
+    },[])
 
     return(
         <>

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import LoadingScreen from './components/LoadingScreen'
 import Contact from './components/Contact'
 import { AnimatePresence } from 'motion/react'
-import Project1 from './components/Projects/Project1'
+import Project from './components/Projects/Project'
 import NotFound from './components/NotFound'
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
     }
   },[])
 
+  
   const handleExitComplete=()=>document.body.classList.remove("overflow-hidden");
   
 
@@ -36,7 +37,7 @@ function App() {
     <Routes location={location} key={location.pathname}>
       <Route path='/' element={<Home/>}/>
       <Route path='/contact' element={<Contact/>}/>
-      <Route path='/project1' element={<Project1/>}/>
+      <Route path='/project/:id' element={<Project/>}/>
       <Route path="*" element={<NotFound/>} />
     </Routes>
     </>

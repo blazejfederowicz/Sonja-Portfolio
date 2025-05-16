@@ -51,7 +51,7 @@ export default function Navbar(){
 
     return(<>
         <nav ref={ref} className={`fixed top-0 inset-x-0 z-[100] duration-300 overflow-hidden ${
-        isScrolled || showMenu ? "bg-neutral-100/35 backdrop-blur-xs shadow-lg " : "bg-transparent "
+        isScrolled || showMenu ? "bg-neutral-100/50 backdrop-blur-sm shadow-lg " : "bg-transparent "
       } ${isScrolled?"py-4":"py-5"} ${navLink && window.innerWidth<641 ? "max-h-[400px]" : "max-h-[80px]"}`}>
             <div className="container px-2 h-full flex justify-between items-center mx-auto">
                 <Reveal>
