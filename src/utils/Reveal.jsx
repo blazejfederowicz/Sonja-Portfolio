@@ -19,6 +19,7 @@ export const Reveal = ({children, customStyle, delay, start})=>{
                 className='h-full'
                 initial="hidden"
                 animate={controls}
+                transition={{delay:delay}}
                 variants={{
                     visible:{opacity:1,transform:"translateX(0px)"},
                     hidden:{opacity:0,transform:"translateX(-100px)"}

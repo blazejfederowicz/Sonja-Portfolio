@@ -3,6 +3,7 @@ import image1 from '../../assets/images/image1.png'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import {useProjects} from '../../utils/ProjectContext'
+import Navbar from '../Navbar'
 
 export default function Project(){
     const {id} = useParams()
@@ -10,7 +11,6 @@ export default function Project(){
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        console.log(currentProject)
     }, [])
     return(
         <>
@@ -25,6 +25,7 @@ export default function Project(){
                         visible:{backgroundColor:"rgba(0,0,0,0.4)"}
                     }}
                 >
+                    <Navbar delay={0.5}/>
 
                 </motion.div>
             </motion.div>

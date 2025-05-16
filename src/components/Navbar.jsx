@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { useAnimation, motion, easeIn } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 
-export default function Navbar(){
+export default function Navbar({delay=0}){
     const [isScrolled, setIsScrolled] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [ navLink, setNavLink] = useState(false);
@@ -54,13 +54,13 @@ export default function Navbar(){
         isScrolled || showMenu ? "bg-neutral-100/50 backdrop-blur-sm shadow-lg " : "bg-transparent "
       } ${isScrolled?"py-4":"py-5"} ${navLink && window.innerWidth<641 ? "max-h-[400px]" : "max-h-[80px]"}`}>
             <div className="container px-2 h-full flex justify-between items-center mx-auto">
-                <Reveal>
+                <Reveal delay={delay}>
                     <Link to="/" className="flex gap-5">
                         <img src={brand} className="h-[2.5em]"  alt="brand"/>
                         <p className="mt-3 font-alta text-[#525351]">Baroque</p>
                     </Link>
                 </Reveal>
-                <Reveal>
+                <Reveal delay={delay}>
                     <div className="h-full custom-width flex items-center gap-6">
                         <div className="overflow-hidden w-full hidden sm:block">
                             <motion.ol
@@ -143,31 +143,31 @@ export default function Navbar(){
             <div className="container px-2">
             { showMenu && (
                 <div className="space-y-1 sm:hidden px-2 pt-2 pb-3 mt-6">
-                <a href="#home" className="block rounded-md py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <NavLink to="/" className="block rounded-md py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     Home
                     </Reveal>
-                </a>
+                </NavLink>
                 <a href="#about" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     About
                     </Reveal>
                 </a>
-                <a href="#projects" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <a href="#events" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     Events
                     </Reveal>
                 </a>
-                <a href="#expiriance" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <a href="#projects" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     Projects
                     </Reveal>
                 </a>
-                <a href="#contact" className="block rounded-md py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <NavLink to="/contact" className="block rounded-md py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     Contact
                     </Reveal>
-                </a>
+                </NavLink>
                 </div>
             )}
             </div>
