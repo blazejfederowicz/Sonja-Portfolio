@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import {useProjects} from '../../utils/ProjectContext'
 import Navbar from '../Navbar'
+import Footer from '../Footer'
 
 export default function Project(){
     const {id} = useParams()
@@ -14,7 +15,7 @@ export default function Project(){
     }, [])
     return(
         <>
-            <motion.div className="w-full h-lvh bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(${image1})`}}>
+            <motion.header className="w-full h-lvh bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(${image1})`}}>
                 <motion.div className="w-full h-full"
                     initial="hidden"
                     whileInView="visible"
@@ -28,8 +29,9 @@ export default function Project(){
                     <Navbar delay={0.5}/>
 
                 </motion.div>
-            </motion.div>
-            <div className="h-lvh"></div>
+            </motion.header>
+            <main className="h-lvh"></main>
+            <Footer/>
         </>
     )
 }

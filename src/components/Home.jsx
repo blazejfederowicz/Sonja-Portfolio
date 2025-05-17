@@ -23,6 +23,8 @@ export default function Home(){
         document.body.classList.remove("overflow-hidden")
         const html=document.documentElement.classList;
 
+        window.scrollTo(0,0)
+
         if(!html.contains("scroll-smooth")) {html.add("scroll-smooth")}
     },[])
 
@@ -33,17 +35,19 @@ export default function Home(){
                 <Navbar/>
                 <Hero/>
             </header>
-            <main >
+            <main className="h-fit">
                 <About/>
                 <Events/>
                 <Projects/>
             </main>
-            <footer className="w-full bg-center h-[20em] py-16 mt-50 bg-no-repeat bg-cover cursor-pointer"
-                style={{backgroundImage:`url(${image2})`}}
-                onClick={(e)=>handleClick(e)}
-             >
-                <div className="w-3/4 h-full mx-auto">
-                    <h1 className="text-7xl text-white font-alta">Contact</h1>
+            <footer className="w-full overflow-hidden">
+                <div className="w-full bg-center h-[20em] py-16 mt-25 md:mt-50 bg-no-repeat bg-cover cursor-pointer transition-transform duration-300 translate-y-5 hover:translate-y-0 active:translate-y-0"
+                    style={{backgroundImage:`url(${image2})`}}
+                    onClick={(e)=>handleClick(e)}
+                >
+                    <div className="w-3/4 h-full mx-auto">
+                        <h1 className="text-7xl text-white font-alta">Contact</h1>
+                    </div>
                 </div>
             </footer>
             {footerPosition&&(

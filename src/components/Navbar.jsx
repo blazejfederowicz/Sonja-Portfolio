@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { useAnimation, motion, easeIn } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 
-export default function Navbar({delay=0}){
+export default function Navbar({delay=0,home=false}){
     const [isScrolled, setIsScrolled] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [ navLink, setNavLink] = useState(false);
@@ -78,13 +78,13 @@ export default function Navbar({delay=0}){
                                     <NavLink  to="/" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Home</NavLink>
                                 </li>
                                 <li className={`lg:w-[55px] w-[49px] flex justify-center overflow-hidden duration-300 ${navLink?'mx-2 ease-in delay-75':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <a href="#about" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">About</a>
+                                    <a href={home?"/":"#about"} className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">About</a>
                                 </li>
                                 <li className={`lg:w-[62px] w-[53px] flex justify-center duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[50ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <a href="#events" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Events</a>
+                                    <a href={home?"/":"#events"} className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Events</a>
                                 </li>
                                 <li className={`flex justify-center w-[65px] lg:w-[75px] duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[25ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <a href="#projects" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Projects</a>
+                                    <a href={home?"/":"#projects"} className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Projects</a>
                                 </li>
                                 <li className={`flex justify-center lg:w-[72px] w-[62px] duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[25ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
                                     <NavLink to="/contact" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Contact</NavLink>
@@ -148,17 +148,17 @@ export default function Navbar({delay=0}){
                     Home
                     </Reveal>
                 </NavLink>
-                <a href="#about" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <a href={home?"/":"#about"} className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     About
                     </Reveal>
                 </a>
-                <a href="#events" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <a href={home?"/":"#events"} className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     Events
                     </Reveal>
                 </a>
-                <a href="#projects" className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
+                <a href={home?"/":"#projects"} className="block rounded-md  py-2 text-base font-medium text-gray-700 hover:text-gray-400 active:text-gray-400">
                     <Reveal>
                     Projects
                     </Reveal>
