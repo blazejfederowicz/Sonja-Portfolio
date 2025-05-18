@@ -45,7 +45,7 @@ export default function Projects(){
     },[])
 
     return(<>
-        <section id="projects" className="container px-2 mx-auto mt-50">
+        <section id="projects" className="container px-2 mx-auto mt-28">
             <div>
                 <Reveal>
                 <h2 className="font-alta text-4xl tracking-widest text-gray-600">Projects<span className="tracking-tight">||</span></h2>
@@ -55,8 +55,13 @@ export default function Projects(){
                     {projectsArr.filter((_,i)=> i%2===0).map((e,i)=>{
                         return(
                         <div  key={`even-${e.index}`}>
-                            <motion.div layout onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer transition-[transform_box-shadow] duration-400 ease-out hover:shadow-2xl hover:scale-102`:''}`} 
+                            <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer`:''}`} 
                                 style={{backgroundImage:`url(${e.src})`,height:e.height}}
+                                whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+                                    transition:{
+                                        duration:0.28
+                                    }
+                                 } : {}}
                                 initial={{x:"-100px", opacity:0}}
                                 whileInView={{x:0,opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
                                 viewport={{once:true}}
@@ -68,7 +73,12 @@ export default function Projects(){
                     {projectsArr.filter((_,i)=> i%2!==0).map((e,i)=>{
                         return(
                         <div  key={`odd-${e.index}`}>
-                            <motion.div layout onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer transition-[transform_box-shadow] duration-400 ease-out hover:shadow-2xl hover:scale-102`:''}`} 
+                            <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer`:''}`} 
+                                whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+                                    transition:{
+                                        duration:0.28
+                                    }
+                                 } : {}}
                                 style={{backgroundImage:`url(${e.src})`,height:e.height}}
                                 initial={{x:"100px", opacity:0}}
                                 whileInView={{x:0,opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}

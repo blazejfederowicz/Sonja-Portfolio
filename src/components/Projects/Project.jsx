@@ -1,33 +1,109 @@
 import { motion } from 'motion/react'
-import image1 from '../../assets/images/image1.png'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import {useProjects} from '../../utils/ProjectContext'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
+import { Reveal } from '../../utils/Reveal'
+import { useState } from 'react'
 
 export default function Project(){
+    const [click, setClick] = useState(false);
     const {id} = useParams()
     const currentProject = useProjects().find(e=> e.index===parseInt(id,10))
+
+    const handleClick = ()=>{
+        
+        document.documentElement.classList.add("scroll-smooth")
+        window.scrollTo(0,window.innerHeight)
+        document.body.classList.remove("overflow-hidden")
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
     return(
         <>
-            <motion.header className="w-full h-lvh bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(${image1})`}}>
-                <motion.div className="w-full h-full"
+            <motion.header className="w-full h-lvh bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(${currentProject.src})`}}
+            >
+                <motion.div className="w-full h-full relative"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{once:true}}
                     transition={{duration:0.3,ease:[0.4, 0, 0.9, 1]}}
                     variants={{
                         hidden:{backgroundColor:"rgba(0,0,0,0)"},
-                        visible:{backgroundColor:"rgba(0,0,0,0.4)"}
+                        visible:{backgroundColor:"rgba(0,0,0,0.3)"}
                     }}
                 >
-                    <Navbar delay={0.5}/>
-
+                    <Navbar delay={0.5} text='white'/>
+                    <div className="container mx-auto px-5 md:px-10 h-full flex flex-col justify-end py-10 md:py-20">
+                            <motion.div className="flex items-center justify-center w-fit"
+                                initial={{
+                                    opacity:0
+                                }}
+                                whileInView={{
+                                    opacity:1,
+                                    transition:{
+                                        delay:0.8,
+                                        duration:0.4,
+                                    }
+                                }}
+                                viewport={{once:true}}
+                            >
+                                <p className='text-white font-bold tracking-widest text-xs sm:text-base md:text-lg text-shadow-[0px_2px_10px_rgba(0,0,0,0.5)]'>PROJECT</p>
+                                <div className="h-[2em] md:h-[3em] w-[1px] bg-white/50 mx-5"></div>
+                                <p className='text-white/50 font-bold tracking-widest text-xs sm:text-base md:text-lg text-shadow-[0px_2px_10px_rgba(0,0,0,0.5)]'>ARCHITECTURAL DESIGN</p>
+                            </motion.div>
+                            <motion.h1 className=' text-white text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-alta tracking-widest max-w-[856px]'
+                                initial={{
+                                    clipPath:"inset(0 100% 0 0)",
+                                    opacity:0
+                                }}
+                                whileInView={{
+                                    clipPath:"inset(0 0 0 0)",
+                                    opacity:1,
+                                    transition:{
+                                        delay:1.2,
+                                        duration:1,
+                                        ease:[0.4,0.2,0.6,1]
+                                    }
+                                }}
+                                viewport={{once:true}}
+                            >{currentProject.title}</motion.h1>
+                            <Reveal delay={1}>
+                            <p className='text-white/70 text-xs sm:text-base md:text-lg font font-medium tracking-widest mb-5 md:mb-10 md:mt-5 mt-2 max-w-[840px]'>{currentProject.description}</p>
+                            </Reveal>
+                            <motion.button onClick={handleClick} className='w-fit py-3 px-5 md:py-5 group md:px-10 border relative border-white/70 cursor-pointer before:absolute before:content-[""] before:transition-transform before:block before:origin-left before:h-full before:w-full before:bg-white before:top-0 before:left-0 before:scale-x-0 before:duration-400 before:-z-30 hover:before:scale-x-100 active:before:scale-x-100'
+                                initial={{
+                                    clipPath:"inset(0 0 100% 0)",
+                                    opacity: 0
+                                }}
+                                whileInView={{
+                                    clipPath:"inset(0 0 0 0)",
+                                    opacity:1,
+                                    transition:{
+                                        delay:0.4,
+                                        duration:0.5,
+                                        ease:[0.4,0.2,0.6,1]
+                                    }
+                                }}
+                                viewport={{once:true}}
+                            >
+                                <motion.p className='text-white font-bold tracking-wider text-xs md:text-base group-hover:text-black duration-150 transition-colors group-active:text-black'
+                                    initial={{
+                                        opacity:0
+                                    }}
+                                    whileInView={{
+                                        opacity:1,
+                                        transition:{
+                                            duration:0.4,
+                                            delay:0.6
+                                        }
+                                    }}
+                                >READ MORE</motion.p>    
+                            </motion.button>
+                    </div>
                 </motion.div>
             </motion.header>
             <main className="h-lvh"></main>

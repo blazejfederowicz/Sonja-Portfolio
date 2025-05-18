@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { useAnimation, motion, easeIn } from "motion/react";
 import { Link, NavLink } from "react-router-dom";
 
-export default function Navbar({delay=0,home=false}){
+export default function Navbar({delay=0,home=false,text="black"}){
     const [isScrolled, setIsScrolled] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [ navLink, setNavLink] = useState(false);
@@ -75,19 +75,19 @@ export default function Navbar({delay=0,home=false}){
                                 transition={[easeIn]}
                             >
                                 <li className="flex justify-center lg:w-[52px] w-[48px] opacity-80 mx-2 overflow-hidden tracking-widest cursor-pointer">
-                                    <NavLink  to="/" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Home</NavLink>
+                                    <NavLink  to="/" className={`hover:font-semibold animLink duration-150 ease-in-out active:font-semibold text-${text}`}>Home</NavLink>
                                 </li>
                                 <li className={`lg:w-[55px] w-[49px] flex justify-center overflow-hidden duration-300 ${navLink?'mx-2 ease-in delay-75':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <a href={home?"/":"#about"} className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">About</a>
+                                    <a href={home?"/":"#about"} className={`hover:font-semibold animLink duration-150 ease-in-out active:font-semibold text-${text}`}>About</a>
                                 </li>
                                 <li className={`lg:w-[62px] w-[53px] flex justify-center duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[50ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <a href={home?"/":"#events"} className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Events</a>
+                                    <a href={home?"/":"#events"} className={`hover:font-semibold animLink duration-150 ease-in-out active:font-semibold text-${text}`}>Events</a>
                                 </li>
                                 <li className={`flex justify-center w-[65px] lg:w-[75px] duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[25ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <a href={home?"/":"#projects"} className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Projects</a>
+                                    <a href={home?"/":"#projects"} className={`hover:font-semibold animLink duration-150 ease-in-out active:font-semibold text-${text}`}>Projects</a>
                                 </li>
                                 <li className={`flex justify-center lg:w-[72px] w-[62px] duration-300 overflow-hidden ${navLink?'mx-2 ease-in delay-[25ms]':'ms-1 ease-out'} opacity-80 tracking-widest`}>
-                                    <NavLink to="/contact" className="hover:font-semibold animLink duration-150 ease-in-out active:font-semibold">Contact</NavLink>
+                                    <NavLink to="/contact" className={`hover:font-semibold animLink duration-150 ease-in-out active:font-semibold text-${text}`}>Contact</NavLink>
                                 </li>
                             </motion.ol>
                         </div>

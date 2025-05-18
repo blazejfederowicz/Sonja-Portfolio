@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import {motion, useScroll, useTransform} from 'motion/react'
 import { Reveal } from '../utils/Reveal';
-import image1 from '../assets/images/image1.png'
-import image2 from '../assets/images/image2.png'
+import image1 from '../assets/images/event1.jpg'
+import image2 from '../assets/images/event2.jpg'
+import image3 from '../assets/images/event3.jpg'
 
 
 export default function Events(){
@@ -39,28 +40,28 @@ export default function Events(){
 
     const events =[
         {
-            sideText:"Dolor sit amet",
-            title:"Dolor sit amet consectetur adipiscing",
-            message:"Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo ",
+            sideText:"urban Futures",
+            title:"Urban Futures Exhibition",
+            message:"Presented a mixed-use development project focused on adaptive reuse and sustainable urban growth strategies in a rapidly changing city environment. ",
             src: image1
         },
         {
-            sideText:"Dolor sit amet",
-            title:"Dolor sit amet consectetur adipiscing",
-            message:"Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo ",
+            sideText:"Student works",
+            title:"Student Works Showcase 2024",
+            message:"Featured conceptual models and renderings exploring minimal housing solutions, emphasizing spatial efficiency and affordability in urban contexts.",
             src: image2
         },
         {
-            sideText:"Dolor sit amet",
-            title:"Dolor sit amet consectetur adipiscing",
-            message:"Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo ",
-            src: image1
+            sideText:"Architecture",
+            title:"Architecture & Society Expo",
+            message:"Exhibited research-driven design addressing community space, including a pavilion concept promoting social interaction through modular wooden structures.",
+            src: image3
         },
     ]
 
     return(
         <>
-            <section id='events' className="pt-44">
+            <section id='events' className="py-22 bg-white-almost">
                 <div className="flex container px-2 mx-auto">
                     <Reveal>
                     <h2 className="font-alta text-4xl tracking-widest text-gray-600">Events<span className="tracking-tight">||</span></h2>

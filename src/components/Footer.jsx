@@ -6,7 +6,7 @@ export default function Footer (){
     const projects = useProjects()
 
     return(<>
-        <footer className="bg-gray-sky relative">
+        <footer className="bg-zinc-100 relative">
             <div className="flex justify-between gap-[2em] mb-5">
                 <div className="w-[4em] ms-5 h-[2em] rounded-full relative bg-white-almost -translate-y-1/2"></div>
                 <div className="w-1/2 mx-auto -translate-y-1/2 h-[3em] rounded-b-full bg-white"></div>

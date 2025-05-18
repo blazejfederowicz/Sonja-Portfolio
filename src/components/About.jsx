@@ -7,20 +7,20 @@ export default function About(){
     const [childWidth, setChildWidth] = useState(0)
 
     const aboutContent = [{
-        title:"Lorem ipsum",
-        message:"dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien "
+        title:"Conceptual Design",
+        message:"Transforming ideas into strong, creative spatial concepts."
     },
     {
-        title:"Lorem ipsum",
-        message:"dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien "
+        title:"Technical Drafting",
+        message:"Creating precise drawings for clear construction guidance."
     },
     {
-        title:"Lorem ipsum",
-        message:"dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien "
+        title:"Modeling & Visualization",
+        message:"Building detailed models to visualize design intent clearly."
     },
     {
-        title:"Lorem ipsum",
-        message:"dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien "
+        title:"Project Coordination",
+        message:"Managing tasks and teams to ensure smooth project delivery. "
     },
 ]
 
@@ -40,7 +40,7 @@ export default function About(){
     },[])
 
     return(
-        <section id="about" className="container mx-auto px-2 pt-22">
+        <section id="about" className="container mx-auto px-2 pt-22 mb-22">
             <div className="flex">
                 <Reveal>
                 <h2 className="font-alta text-4xl tracking-widest text-gray-600">About<span className="tracking-tight">||</span></h2>
