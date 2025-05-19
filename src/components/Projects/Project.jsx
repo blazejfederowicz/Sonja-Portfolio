@@ -37,7 +37,7 @@ export default function Project(){
                     }}
                 >
                     <Navbar delay={0.5} text='white'/>
-                    <div className="container mx-auto px-5 md:px-10 h-full flex flex-col justify-end py-10 md:py-20">
+                    <div className="container mx-auto px-5 md:px-10 h-full flex flex-col justify-end py-40 md:py-20">
                             <motion.div className="flex items-center justify-center w-fit"
                                 initial={{
                                     opacity:0
@@ -101,12 +101,51 @@ export default function Project(){
                                             delay:0.6
                                         }
                                     }}
+                                    viewport={{once:true}}
                                 >READ MORE</motion.p>    
                             </motion.button>
                     </div>
                 </motion.div>
             </motion.header>
-            <main className="h-lvh"></main>
+            <main className="">
+                <div className="w-full py-30 bg-neutral-300">
+                    <div className="grid md:grid-cols-2 gap-[5em] sm:gap-[10em] md:gap-[10em] container mx-auto px-2">
+                        <Reveal delay={0.3}>
+                        <img src={currentProject.imageFirst} loading='lazy' className='md:h-full w-full object-cover object-center' alt={currentProject.title}/>
+                        </Reveal>
+                        <div className="w-full flex flex-col justify-center text-black/50 border-l-2 border-l-black/20 px-10">
+                            <Reveal>
+                            <h3 className='text-5xl mb-10'>{currentProject.title}</h3>
+                            </Reveal>
+                            <Reveal>
+                            <p className=' text-lg max-w-[500px] whitespace-pre-line'>{currentProject.contentFirst}</p>
+                            </Reveal>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full py-30">
+                    <div className="grid md:grid-cols-2 gap-[5em] sm:gap-[10em] md:gap-[4em] lg:gap-[10em] container mx-auto px-2">
+                        <motion.img src={currentProject.imageSecond} loading='lazy' className='md:order-1 md:h-full w-full object-cover object-center' alt={currentProject.title}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={{delay:0.3}}
+                        variants={{
+                            visible:{opacity:1,transform:"translateX(0px)"},
+                            hidden:{opacity:0,transform:"translateX(-100px)"}
+                        }}
+                        viewport={{once: true}}
+                        />
+                        <div className="w-full flex flex-col justify-center text-black/50 border-l-2 border-l-black/20 px-10">
+                            <Reveal>
+                            <h3 className='text-5xl mb-10'>{currentProject.title}</h3>
+                            </Reveal>
+                            <Reveal>
+                            <p className=' text-lg max-w-[500px] whitespace-pre-line'>{currentProject.contentSecond}</p>
+                            </Reveal>
+                        </div>
+                    </div>
+                </div>
+            </main>
             <Footer/>
         </>
     )

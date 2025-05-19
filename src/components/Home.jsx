@@ -68,7 +68,9 @@ export default function Home(){
                     initial={{opacity:1}}
                     animate={footerPosition?{opacity:0, transition:{duration:0.4}}:false}
                 >
-                    <h1 className="text-4xl md:text-7xl px-2 container mx-auto text-white font-alta text-shadow">Contact</h1>
+                    <h1 className="text-4xl md:text-7xl px-2 container mx-auto text-white font-alta text-shadow"
+                        
+                    >Contact</h1>
                 </motion.div>
             </motion.div>
             )}

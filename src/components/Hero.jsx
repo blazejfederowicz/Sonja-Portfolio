@@ -18,7 +18,7 @@ export default function Hero(){
     }
     
     return(<>
-        <section id="home" className="h-lvh flex flex-col pt-[80px]">
+        <section id="home" className="h-lvh relative flex flex-col pt-[80px]">
             <div className="w-full relative my-auto grow grid grid-rows-[1fr_repeat(4,auto)_1fr] lg:grid-rows-3 max-h-full lg:max-h-[400px] lg:grid-cols-[repeat(3,auto)] grid-cols-2 gap-[1em] md:gap-[2em] container mx-auto px-2">
                 <p className="font-alta absolute rotate-90 -left-5 top-50 -z-50 -translate-y-1/2 hidden lg:block text-sm text-black/50">structure</p>
                 <p className="font-alta absolute -rotate-90 -right-5 top-50 -z-50  hidden lg:block text-sm text-black/50">blueprint</p>
