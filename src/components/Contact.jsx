@@ -96,7 +96,7 @@ export default function Contact(){
                                 </div>
                                 <div>
                                 <h4 className="font-medium">Location</h4>
-                                <p className="text-gray-600">State, USA</p>
+                                <p className="text-gray-600">Copenhagen, Denmark</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
@@ -105,7 +105,7 @@ export default function Contact(){
                             </div>
                                 <div>
                                 <h4 className="font-medium">Email</h4>
-                                <a href="" className="text-gray-600 hover:text-salmon2 active:text-salmon2 transition-colors break-all">email@gmail.com</a>
+                                <a href="mailto:" className="text-gray-600 hover:text-salmon2 active:text-salmon2 transition-colors break-all">niels.durante@formarch.com</a>
                                 </div>
                             </div>
                             </div>
@@ -118,7 +118,7 @@ export default function Contact(){
                                 <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="py-2 px-3 rounded-full bg-neutral-200 hover:bg-salmon2/30 text-salmon hover:text-salmon2 active:text-salmon2 transition-colors">
                                     <i className="bi bi-linkedin"></i>
                                 </a>
-                                <a href="mailto:email@gmail.com" target="_blank" rel="noopener noreferrer" className="py-2 px-3 rounded-full bg-neutral-200 hover:bg-salmon2/30 text-salmon hover:text-salmon2 active:text-salmon2 transition-colors">
+                                <a href="mailto:" target="_blank" rel="noopener noreferrer" className="py-2 px-3 rounded-full bg-neutral-200 hover:bg-salmon2/30 text-salmon hover:text-salmon2 active:text-salmon2 transition-colors">
                                     <i className="bi bi-envelope"></i>
                                 </a>
                                 </div>

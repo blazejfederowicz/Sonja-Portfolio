@@ -1,13 +1,17 @@
 import Marquee from "./Marquee";
 import {Reveal} from '../utils/Reveal';
 import {motion} from 'motion/react';
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import pdf from '../assets/CV.pdf'
-import bigBen from '../assets/images/bigBen.png'
-import arch from '../assets/images/arch.png'
+import bigBen from '../assets/images/tample.svg'
+import arch from '../assets/images/rect.svg'
 
 export default function Hero(){
     const [buttonSlide, setButtonSlide] = useState(false);
+    const [screenWidth, setScreenWidth] = useState(0)
+    const circle1 = useRef(null);
+    const circle2 = useRef(null);
+    const [height, setHeight] = useState(0)
     const x = innerWidth<640?(2/7)*100: innerWidth<768?(2.33/7)*100:33
 
     const handleDwonload=()=>{
@@ -16,28 +20,84 @@ export default function Hero(){
             setButtonSlide(false)
         }, 500);
     }
+
+    useEffect(()=>{
+        const handleResize = ()=>setScreenWidth(window.innerWidth);
+        handleResize()
+
+        window.addEventListener("resize",handleResize);
+        
+        return()=> window.removeEventListener("resize",handleResize)
+    },[])
+
+    useEffect(()=>{
+        if(screenWidth<1024){
+            if(circle2.current){
+                const rect= circle2.current.getBoundingClientRect();
+                setHeight(rect.width)
+            }
+        } else{
+            if(circle1.current){
+                const rect= circle1.current.getBoundingClientRect();
+                setHeight(rect.width)
+            }
+        }
+        
+    },[screenWidth])
     
     return(<>
-        <section id="home" className="h-lvh relative flex flex-col pt-[80px]">
-            <div className="w-full relative my-auto grow grid grid-rows-[1fr_repeat(4,auto)_1fr] lg:grid-rows-3 max-h-full lg:max-h-[400px] lg:grid-cols-[repeat(3,auto)] grid-cols-2 gap-[1em] md:gap-[2em] container mx-auto px-2">
-                <p className="font-alta absolute rotate-90 -left-5 top-50 -z-50 -translate-y-1/2 hidden lg:block text-sm text-black/50">structure</p>
-                <p className="font-alta absolute -rotate-90 -right-5 top-50 -z-50  hidden lg:block text-sm text-black/50">blueprint</p>
-                <div className="absolute left-2 -bottom-0 -z-50 translate-y-1/2 flex-row-reverse gap-[1em] hidden lg:flex items-center">
+        <section id="home" className="h-lvh flex flex-col pt-[80px]">
+            <div className="w-fit relative my-auto grow grid grid-rows-[1fr_repeat(4,auto)_1fr] lg:grid-rows-3 max-h-full lg:max-h-[400px] lg:grid-cols-[repeat(3,auto)] grid-cols-2 gap-[1em] md:gap-[2em] container mx-auto px-2">
+                <div className="absolute left-2 -bottom-0 translate-y-1/2 flex-row-reverse gap-[1em] hidden lg:flex items-center">
                     <div className="w-[4em] h-[1px] bg-black/50"></div>
                     <p className="font-alta text-sm text-black/50">Façade</p>
                 </div>
-                <div className=" flex items-center justify-end word1-grid-area">
-                    <h1 className="font-alta font-light tracking-widest small text-5xl sm:text-6xl md:text-7xl text-end">Sonja</h1>
+                <div className=" flex items-center justify-center lg:justify-end word1-grid-area">
+                    <Reveal>
+                    <h1 className="font-alta font-normal tracking-widest small text-4xl sm:text-6xl lg:text-7xl text-end text-zinc-700">Niels</h1>
+                    </Reveal>
+                    <motion.div ref={circle2} className=" flex items-center px-2 ms-4 bg-salmon w-fit rounded-full lg:hidden" style={{height:height}}
+                        initial={{
+                            opacity:0,
+                            transform:"translateX(100px)"
+                        }}
+                        whileInView={{
+                            opacity:1,
+                            transform:"translateX(0)",
+                            transition:{
+                                delay:0.2
+                            }
+                        }}
+                        viewport={{once:true}}
+                    >
+                        <h1 className="font-alta font-bold tracking-wider small text-white text-4xl sm:text-6xl lg:text-7xl">Durante</h1>
+
+                    </motion.div>
                 </div>
-                <div className=" flex items-center word2-grid-area">
-                    <h1 className="font-alta font-light tracking-widest small text-5xl sm:text-6xl md:text-7xl">Pengili</h1>
+                <div className=" items-center word2-grid-area hidden lg:flex" >
+                    <motion.div ref={circle1} className=" flex items-center px-2 bg-salmon w-fit rounded-full" style={{height:height}}
+                        initial={{
+                            opacity:0,
+                            transform:"translateX(100px)"
+                        }}
+                        whileInView={{
+                            opacity:1,
+                            transform:"translateX(0)",
+                            transition:{
+                                delay:0.2
+                            }
+                        }}
+                        viewport={{once:true}}
+                    >
+                        <h1 className="font-alta font-bold tracking-wider small text-white text-5xl sm:text-6xl md:text-7xl">Durante</h1>
+                    </motion.div>
                 </div>
                 <div className="row-span-2 ben-grid-area">
                     <Reveal>
-                    <img src={bigBen} className="lg:h-full h-[9em] object-contain" alt="bigBen"/>
+                    <img src={bigBen} className="lg:h-[14em] h-[9em] object-contain" alt="bigBen"/>
                     </Reveal>
                 </div>
-                <div className="flex sm:gap-8 gap-2 md:gap-4 xl:gap-8 justify-center col-span-2 md:col-span-1  items-center word3-grid-area">
+                <div className="flex sm:gap-8 gap-2 md:gap-4 xl:gap-8 justify-center my-5 col-span-2 md:col-span-1  items-center word3-grid-area">
                     <Reveal>
                         <h1 className="font-alta text-end font-light w-fit tracking-widest text-black/70 text-xl sm:text-3xl md:text-4xl">Architecture student</h1>
                     </Reveal>

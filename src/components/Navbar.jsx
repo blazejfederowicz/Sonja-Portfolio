@@ -93,7 +93,7 @@ export default function Navbar({delay=0,home=false,text="black"}){
                         </div>
                         
                         <div className="nav-links order-1 sm:order-0 group relative cursor-pointer" onClick={()=>setNavLink(prev=> !prev)}>
-                        <motion.div className="ease-in-out transition-colors duration-150 group-hover:bg-salmon group-active:bg-salmon h-[4px] bg-light-pink mb-1"
+                        <motion.div className="ease-in-out transition-colors duration-150 group-hover:bg-salmon2 group-active:bg-salmon2 h-[4px] bg-salmon mb-1"
                             initial="off"
                             animate={navLink?"on":"off"}
                             variants={{
@@ -101,7 +101,7 @@ export default function Navbar({delay=0,home=false,text="black"}){
                                 off:{x:0,y:0,rotate:0, width:"3em"}
                             }}
                         />
-                        <motion.div className="w-[2em] transition-colors ease-in-out duration-150 group-hover:bg-salmon group-active:bg-salmon ms-auto h-[4px] bg-light-pink "
+                        <motion.div className="w-[2em] transition-colors ease-in-out duration-150 group-hover:bg-salmon2 group-active:bg-salmon2 ms-auto h-[4px] bg-salmon "
                             initial="off"
                             animate={navLink?"on":"off"}
                             variants={{
@@ -115,7 +115,7 @@ export default function Navbar({delay=0,home=false,text="black"}){
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
                         preserveAspectRatio="xMidYMid meet">
 
-                        <g className="fill-light-pink hover:fill-salmon active:fill-salmon  ease-in-out duration-150" transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                        <g className="fill-salmon hover:fill-salmon2 active:fill-salmon2  ease-in-out duration-150" transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
                         fill="#000000" stroke="none">
                         <path d="M2310 5099 c-297 -28 -589 -110 -865 -243 -273 -131 -477 -277 -701
                         -500 -387 -388 -615 -826 -721 -1386 -15 -79 -18 -149 -18 -420 0 -352 4 -386

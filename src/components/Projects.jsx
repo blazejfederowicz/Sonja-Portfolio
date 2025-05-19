@@ -6,7 +6,6 @@ import {useProjects} from '../utils/ProjectContext'
 
 
 export default function Projects(){
-    const [screenWidth, setScreenWidth] = useState(0)
     const [animateProject, setAnimateProject] = useState(null)
     const [hoverAnim, setHoverAnim] = useState(true)
     const navigate = useNavigate()
@@ -35,14 +34,6 @@ export default function Projects(){
         setCanClick(false)
     }
 
-    useEffect(()=>{
-        const handleResize = ()=>setScreenWidth(window.innerWidth);
-        handleResize()
-
-        window.addEventListener("resize",handleResize);
-        
-        return()=> window.removeEventListener("resize",handleResize)
-    },[])
 
     return(<>
         <section id="projects" className="container px-2 mx-auto mt-28">
@@ -54,7 +45,13 @@ export default function Projects(){
                     <div className="flex w-full flex-col gap-[1em]">
                     {projectsArr.filter((_,i)=> i%2===0).map((e,i)=>{
                         return(
-                        <div  key={`even-${e.index}`}>
+                        <motion.div  key={`even-${e.index}`} 
+                        whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+                                    transition:{
+                                        duration:0.28
+                                    }
+                                 } : {}}
+                        >
                             <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer`:''}`} 
                                 style={{backgroundImage:`url(${e.src})`,height:e.height}}
                                 whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
@@ -62,17 +59,23 @@ export default function Projects(){
                                         duration:0.28
                                     }
                                  } : {}}
-                                initial={{x:"-100px", opacity:0}}
-                                whileInView={{x:0,opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
+                                initial={{transform:"translateX(-100px)", opacity:0}}
+                                whileInView={{transform:"translateX(0)",opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
                                 viewport={{once:true}}
                             />
-                       </div>
+                       </motion.div>
                     )})}
                     </div>
                     <div className="flex w-full flex-col gap-[1em]">
                     {projectsArr.filter((_,i)=> i%2!==0).map((e,i)=>{
                         return(
-                        <div  key={`odd-${e.index}`}>
+                        <motion.div  key={`odd-${e.index}`}
+                        whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+                                    transition:{
+                                        duration:0.28
+                                    }
+                                 } : {}}
+                        >
                             <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer`:''}`} 
                                 whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
                                     transition:{
@@ -80,11 +83,11 @@ export default function Projects(){
                                     }
                                  } : {}}
                                 style={{backgroundImage:`url(${e.src})`,height:e.height}}
-                                initial={{x:"100px", opacity:0}}
-                                whileInView={{x:0,opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
+                                initial={{transform:"translateX(100)", opacity:0}}
+                                whileInView={{transform:"translateX(0)",opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
                                 viewport={{once:true}}
                             />
-                       </div>
+                       </motion.div>
                     )})}
                     </div>
                     {animateProject && (

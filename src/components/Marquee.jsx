@@ -54,7 +54,7 @@ export default function Marquee(){
         <div className="pointer-events-none absolute top-full -translate-y-1/2 flex justify-center items-center overflow-hidden w-full h-full ">
             <div className=" absolute bottom-1/2  -left-2 -right-2 -rotate-4 md:-rotate-2 h-[4em] md:h-[7em] bg-wood-brown"></div>
         </div>
-        <div className="w-full bg-gray-sky before-custom h-[4em] md:h-[7em] relative overflow-hidden">
+        <div className="w-full bg-gray-sky h-[4em] md:h-[7em] relative overflow-hidden">
             <motion.div className={`flex -right-4 gap-10 absolute flex-nowrap w-fit whitespace-nowrap top-1/2 -translate-y-1/2`}
                 initial="off"
                 animate="on"
