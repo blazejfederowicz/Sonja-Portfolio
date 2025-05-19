@@ -10,7 +10,6 @@ export default function Hero(){
     const [buttonSlide, setButtonSlide] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0)
     const circle1 = useRef(null);
-    const circle2 = useRef(null);
     const [height, setHeight] = useState(0)
     const x = innerWidth<640?(2/7)*100: innerWidth<768?(2.33/7)*100:33
 
@@ -31,16 +30,9 @@ export default function Hero(){
     },[])
 
     useEffect(()=>{
-        if(screenWidth<1024){
-            if(circle2.current){
-                const rect= circle2.current.getBoundingClientRect();
-                setHeight(rect.width)
-            }
-        } else{
-            if(circle1.current){
-                const rect= circle1.current.getBoundingClientRect();
-                setHeight(rect.width)
-            }
+        if(circle1.current){
+            const rect= circle1.current.getBoundingClientRect();
+            setHeight(rect.width)
         }
         
     },[screenWidth])
@@ -56,7 +48,7 @@ export default function Hero(){
                     <Reveal>
                     <h1 className="font-alta font-normal tracking-widest small text-4xl sm:text-6xl lg:text-7xl text-end text-zinc-700">Niels</h1>
                     </Reveal>
-                    <motion.div ref={circle2} className=" flex items-center px-2 ms-4 custom-circle2 w-fit rounded-full lg:hidden" style={{height:height}}
+                    <motion.div className=" flex items-center px-2 ms-4 w-fit rounded-full lg:hidden" 
                         initial={{
                             opacity:0,
                             transform:"translateX(100px)"
@@ -70,7 +62,7 @@ export default function Hero(){
                         }}
                         viewport={{once:true}}
                     >
-                        <h1 className="font-alta font-bold tracking-wider small text-light-pink text-shadow-lg text-4xl sm:text-6xl lg:text-7xl">Durante</h1>
+                        <h1 className="font-alta font-bold tracking-wider small text-salmon text-shadow-lg text-4xl sm:text-6xl lg:text-7xl">Durante</h1>
 
                     </motion.div>
                 </div>
@@ -89,7 +81,7 @@ export default function Hero(){
                         }}
                         viewport={{once:true}}
                     >
-                        <h1 className="font-alta font-bold small text-light-pink text-shadow-lg text-5xl sm:text-6xl md:text-7xl">Durante</h1>
+                        <h1 className="font-alta font-bold small text-salmon text-shadow-lg text-5xl sm:text-6xl md:text-7xl">Durante</h1>
                     </motion.div>
                 </div>
                 <div className="row-span-2 ben-grid-area">

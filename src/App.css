@@ -19,11 +19,6 @@
   transform: translateX(101%);
 }
 
-.gloss{
-  background: #F2C3B9;
-  background: linear-gradient(120deg,rgba(242, 195, 185, 1) 0%, rgba(245, 245, 245, 1) 18%, rgba(242, 195, 185, 1) 27%, rgba(245, 223, 220, 1) 39%, rgba(242, 195, 185, 1) 48%, rgba(250, 238, 235, 1) 62%, rgba(242, 195, 185, 1) 71%, rgba(242, 195, 185, 1) 86%, rgba(245, 231, 228, 1) 91%, rgba(242, 195, 185, 1) 100%);
-}
-
 .arch-grid-area{
   grid-area: 2/1/3/2;
 }
@@ -60,26 +55,16 @@
 }
 
 .custom-circle{
-  background-color: var(--color-salmon);
+  background-color: var(--color-light-pink);
   background: repeating-linear-gradient(
     45deg,
     transparent,
     transparent 20px,
-    var(--color-salmon) 20px,
-    var(--color-salmon) 40px
+    var(--color-light-pink) 20px,
+    var(--color-light-pink) 40px
   );
 }
 
-.custom-circle2{
-  background-color: var(--color-salmon);
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    var(--color-salmon) 10px,
-    var(--color-salmon) 20px
-  );
-}
 
 @media (max-width:380px){
   .small{

@@ -1,37 +1,14 @@
-import {easeInOut, motion} from 'motion/react'
+import {easeInOut, motion, useInView} from 'motion/react'
 import video from '../assets/videos/play.mp4'
+import { useRef } from 'react'
 
 
 export default function LoadingScreen(){
-    const pathVariantsStrokes = {
-        hidden:{ 
-            pathLength:0
-        },
-        visible: {
-            pathLength: 1,
-            transition: {
-                duration: 2,
-                ease: "easeIn",
-              },
-        }
-    }
-
-    const pathVariantsWidth = {
-        hidden:{ 
-            opacity:0
-        },
-        visible: {
-            opacity: "100%",
-            transition: {
-                duration: 0.5,
-                ease: "easeIn",
-              },
-        }
-    }
-
+    const ref = useRef(null)
+    const isInView = useInView(ref)
 
     return(<>
-        <motion.div className={`fixed overflow-hidden z-[1000] bottom-0 inset-0 bg-white`}
+        <motion.div ref={ref} className={`fixed overflow-hidden z-[1000] bottom-0 inset-0 bg-white`}
             initial={{y:"0%"}}
             variants = {{
                 show:{y:0},
@@ -44,15 +21,26 @@ export default function LoadingScreen(){
             <video src={video} className='w-full h-full object-cover object-center brightness-75' autoPlay loop muted/>
             <motion.svg version="1.0" className='absolute top-1/2 left-1/2 -translate-1/2 w-full' xmlns="http://www.w3.org/2000/svg"
             width="454.000000pt" height="467.000000pt" viewBox="0 0 454.000000 467.000000"
-            preserveAspectRatio="xMidYMid meet">
+            preserveAspectRatio="xMidYMid meet"
+            
+            >
 
             <motion.g transform="translate(0.000000,467.000000) scale(0.100000,-0.100000)"
-            fill="#fff" stroke="none">
-            <motion.path
-            variants={pathVariantsWidth}
-            initial={{pathLength:0}}
-            whileInView="visible"
-            
+            fill="#fff" stroke="none"
+            >
+            <motion.path 
+                initial={{
+                    opacity:0,
+                    y:"200px"
+                }}
+                animate={isInView?{
+                    opacity:1,
+                    y:0,
+                    transition:{
+                        delay:0.2,
+                        duration:0.4
+                    }
+                }:false}
             d="M2164 4566 c-64 -36 -2030 -1790 -2037 -1817 -8 -30 12 -70 43 -86
             36 -19 4153 -19 4190 0 13 7 31 25 40 40 13 24 13 30 0 55 -9 15 -138 136
             -288 270 l-272 243 0 337 c0 250 -3 341 -12 350 -18 18 -382 17 -396 -1 -7 -8
@@ -60,17 +48,49 @@ export default function LoadingScreen(){
             23 -194 -7z"
             />
             <motion.path 
-            initial="hidden"
-            whileInView="visible"
-            variants={pathVariantsStrokes}
-            stroke="white"
-            strokeWidth="10"
-            fill="none"
+            initial={{
+                opacity:0,
+                x:"-200px"
+            }}
+            animate={isInView?{
+                opacity:1,
+                x:0,
+                transition:{
+                    delay:0.4,
+                    duration:0.4
+                }
+                }:false}
+            fill="#fff"
             strokeDasharray="0 1"
             d="M177 2363 c-4 -3 -7 -498 -7 -1098 0 -902 2 -1094 13 -1104 8 -6 17
             -8 20 -4 4 3 7 503 7 1110 0 912 -2 1103 -13 1103 -8 0 -17 -3 -20 -7z"/>
-            <path d="M4320 1266 c0 -1100 0 -1106 20 -1106 20 0 20 5 18 1102 -3 1041 -4
-            1103 -20 1106 -17 3 -18 -55 -18 -1102z"/>
+            <motion.path d="M4320 1266 c0 -1100 0 -1106 20 -1106 20 0 20 5 18 1102 -3 1041 -4
+            1103 -20 1106 -17 3 -18 -55 -18 -1102z"
+            initial={{
+                    opacity:0,
+                    x:"200px"
+                }}
+                animate={isInView?{
+                    opacity:1,
+                    x:0,
+                    transition:{
+                        delay:0.6,
+                        duration:0.4
+                    }
+                }:false}
+            />
+            <motion.g
+                initial={{
+                    clipPath:"inset(0 100% 0 0)"
+                }}
+                animate={isInView?{
+                    clipPath:"inset(0 0% 0 0)",
+                    transition:{
+                        delay:1.6,
+                        duration:0.6
+                    }
+                }:false}
+            >
             <path d="M1953 2303 c-34 -17 -40 -27 -23 -38 6 -4 10 -97 10 -245 0 -148 -4
             -241 -10 -245 -22 -14 -7 -20 50 -20 57 0 72 6 50 20 -6 4 -10 60 -10 136 l0
             129 33 20 c43 27 98 26 123 -1 17 -18 19 -37 19 -152 0 -95 -3 -131 -12 -134
@@ -109,6 +129,20 @@ export default function LoadingScreen(){
             <path d="M3232 2093 c-99 -49 -137 -185 -77 -277 36 -54 132 -82 199 -56 28
             10 106 77 106 91 0 5 -16 -3 -36 -16 -46 -31 -124 -34 -170 -6 -83 50 -85 214
             -3 256 36 19 30 21 79 -20 56 -47 110 -44 110 6 0 38 -145 53 -208 22z"/>
+            </motion.g>
+
+            <motion.g
+                initial={{
+                    opacity:0
+                }}
+                animate={isInView?{
+                    opacity:1,
+                    transition:{
+                        delay:1.3,
+                        duration:0.4
+                    }
+                }:false}
+            >
             <path d="M925 1370 c-11 -17 5 -30 36 -30 22 0 29 5 29 20 0 15 -7 20 -29 20
             -17 0 -33 -4 -36 -10z"/>
             <path d="M1030 1360 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20
@@ -374,8 +408,22 @@ export default function LoadingScreen(){
             -17z"/>
             <path d="M3590 100 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20
             -13 0 -20 -7 -20 -20z"/>
-            <path d="M557 40 c-196 -3 -357 -8 -357 -12 0 -5 0 -12 0 -18 0 -15 4126 -14
-            4136 1 3 6 2 15 -3 20 -10 10 -3173 17 -3776 9z"/>
+            </motion.g>
+            <motion.path d="M557 40 c-196 -3 -357 -8 -357 -12 0 -5 0 -12 0 -18 0 -15 4126 -14
+            4136 1 3 6 2 15 -3 20 -10 10 -3173 17 -3776 9z"
+            initial={{
+                    opacity:0,
+                    y:"-200px"
+                }}
+                animate={isInView?{
+                    opacity:1,
+                    y:0,
+                    transition:{
+                        delay:1.0,
+                        duration:0.4
+                    }
+                }:false}
+            />
             </motion.g>
             </motion.svg>
 

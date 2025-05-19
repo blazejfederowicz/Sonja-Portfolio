@@ -21,7 +21,8 @@ export default function Projects(){
 
         const rect = event.currentTarget.getBoundingClientRect();
 
-        setAnimateProject({
+        setTimeout(() => {
+            setAnimateProject({
             index: element.index,
             src: element.src,
             top: rect.top,
@@ -29,6 +30,8 @@ export default function Projects(){
             width: rect.width,
             height: rect.height,
         })
+        }, 400);
+        
 
         setHoverAnim(false)
         setCanClick(false)
@@ -45,48 +48,44 @@ export default function Projects(){
                     <div className="flex w-full flex-col gap-[1em]">
                     {projectsArr.filter((_,i)=> i%2===0).map((e,i)=>{
                         return(
-                        <motion.div  key={`even-${e.index}`} 
-                        whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+                        <motion.div  key={`even-${e.index}`} className="group relative " 
+                        whileHover={!animateProject ? { scale: 1.02,cursor:"pointer", boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
                                     transition:{
                                         duration:0.28
                                     }
                                  } : {}}
                         >
-                            <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer`:''}`} 
+                            <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover `} 
                                 style={{backgroundImage:`url(${e.src})`,height:e.height}}
-                                whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
-                                    transition:{
-                                        duration:0.28
-                                    }
-                                 } : {}}
                                 initial={{transform:"translateX(-100px)", opacity:0}}
                                 whileInView={{transform:"translateX(0)",opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
                                 viewport={{once:true}}
                             />
+                             <div className={`w-full h-full flex items-end justify-end py-10 px-5 absolute top-0 left-0 bg-sea/80 scale-x-0 origin-right ${hoverAnim?"group-hover:scale-x-100":""} duration-400 pointer-events-none`}>
+                                 <p className="font-alta tracking-widest font-bold text-4xl text-white opacity-0 transition-opacity duration-200 delay-300 group-hover:opacity-100">{e.title}</p>
+                            </div>
                        </motion.div>
                     )})}
                     </div>
                     <div className="flex w-full flex-col gap-[1em]">
                     {projectsArr.filter((_,i)=> i%2!==0).map((e,i)=>{
                         return(
-                        <motion.div  key={`odd-${e.index}`}
-                        whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+                        <motion.div  key={`odd-${e.index}`} className="group relative "
+                        whileHover={!animateProject ? { scale: 1.02, cursor:"pointer", boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
                                     transition:{
                                         duration:0.28
                                     }
                                  } : {}}
                         >
-                            <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover ${hoverAnim?`cursor-pointer`:''}`} 
-                                whileHover={hoverAnim ? { scale: 1.02, boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
-                                    transition:{
-                                        duration:0.28
-                                    }
-                                 } : {}}
+                            <motion.div onClick={(event)=>handlePageTransition(e,event)} className={` text-white bg-center bg-no-repeat bg-cover`}
                                 style={{backgroundImage:`url(${e.src})`,height:e.height}}
                                 initial={{transform:"translateX(100)", opacity:0}}
                                 whileInView={{transform:"translateX(0)",opacity:1, transition:{delay:0.2, ease:[0.4,0.2,0.6,1]}}}
                                 viewport={{once:true}}
                             />
+                            <div className={`w-full h-full flex items-end justify-end py-10 px-5 absolute top-0 left-0 bg-sea/80 scale-x-0 origin-right ${hoverAnim?"group-hover:scale-x-100":""} duration-400 pointer-events-none`}>
+                                 <p className="font-alta tracking-widest font-bold text-4xl text-white opacity-0 transition-opacity duration-200 delay-300 group-hover:opacity-100">{e.title}</p>
+                            </div>
                        </motion.div>
                     )})}
                     </div>

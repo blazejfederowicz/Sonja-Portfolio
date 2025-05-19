@@ -18,7 +18,7 @@ function App() {
     document.body.classList.add("overflow-hidden")
     const handler = setTimeout(()=>{
       setIsLoading(false)
-    },2000)
+    },2500)
 
     return()=>{
       clearTimeout(handler)
