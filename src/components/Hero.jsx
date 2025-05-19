@@ -46,7 +46,7 @@ export default function Hero(){
     },[screenWidth])
     
     return(<>
-        <section id="home" className="h-lvh flex flex-col pt-[80px]">
+        <section id="home" className="min-h-lvh flex flex-col pt-[80px]">
             <div className="w-fit relative my-auto grow grid grid-rows-[1fr_repeat(4,auto)_1fr] lg:grid-rows-3 max-h-full lg:max-h-[400px] lg:grid-cols-[repeat(3,auto)] grid-cols-2 gap-[1em] md:gap-[2em] container mx-auto px-2">
                 <div className="absolute left-2 -bottom-0 translate-y-1/2 flex-row-reverse gap-[1em] hidden lg:flex items-center">
                     <div className="w-[4em] h-[1px] bg-black/50"></div>
@@ -56,7 +56,7 @@ export default function Hero(){
                     <Reveal>
                     <h1 className="font-alta font-normal tracking-widest small text-4xl sm:text-6xl lg:text-7xl text-end text-zinc-700">Niels</h1>
                     </Reveal>
-                    <motion.div ref={circle2} className=" flex items-center px-2 ms-4 bg-salmon w-fit rounded-full lg:hidden" style={{height:height}}
+                    <motion.div ref={circle2} className=" flex items-center px-2 ms-4 custom-circle2 w-fit rounded-full lg:hidden" style={{height:height}}
                         initial={{
                             opacity:0,
                             transform:"translateX(100px)"
@@ -70,12 +70,12 @@ export default function Hero(){
                         }}
                         viewport={{once:true}}
                     >
-                        <h1 className="font-alta font-bold tracking-wider small text-white text-4xl sm:text-6xl lg:text-7xl">Durante</h1>
+                        <h1 className="font-alta font-bold tracking-wider small text-light-pink text-shadow-lg text-4xl sm:text-6xl lg:text-7xl">Durante</h1>
 
                     </motion.div>
                 </div>
                 <div className=" items-center word2-grid-area hidden lg:flex" >
-                    <motion.div ref={circle1} className=" flex items-center px-2 bg-salmon w-fit rounded-full" style={{height:height}}
+                    <motion.div ref={circle1} className=" flex items-center px-2 custom-circle w-fit rounded-full" style={{height:height}}
                         initial={{
                             opacity:0,
                             transform:"translateX(100px)"
@@ -89,7 +89,7 @@ export default function Hero(){
                         }}
                         viewport={{once:true}}
                     >
-                        <h1 className="font-alta font-bold tracking-wider small text-white text-5xl sm:text-6xl md:text-7xl">Durante</h1>
+                        <h1 className="font-alta font-bold small text-light-pink text-shadow-lg text-5xl sm:text-6xl md:text-7xl">Durante</h1>
                     </motion.div>
                 </div>
                 <div className="row-span-2 ben-grid-area">

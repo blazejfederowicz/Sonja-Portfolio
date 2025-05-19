@@ -31,7 +31,7 @@ export default function Home(){
 
     return(
         <>
-            <header className="h-lvh relative bg-no-repeat bg-[40%_23%] bg-cover" style={{backgroundImage:`url(${bg})`}}>
+            <header className="min-h-lvh relative bg-no-repeat bg-[40%_23%] bg-cover" style={{backgroundImage:`url(${bg})`}}>
                 <Navbar/>
                 <Hero/>
             </header>
