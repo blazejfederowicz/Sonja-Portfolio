@@ -44,7 +44,7 @@ export default function Hero(){
                     <div className="w-[4em] h-[1px] bg-black/50"></div>
                     <p className="font-alta text-sm text-black/50">Façade</p>
                 </div>
-                <div className=" flex items-center justify-center lg:justify-end word1-grid-area">
+                <div className=" flex items-center justify-center lg:justify-end word1-grid-area overflow-hidden">
                     <Reveal>
                     <h1 className="font-alta font-normal tracking-widest small text-4xl sm:text-6xl lg:text-7xl text-end text-zinc-700">Niels</h1>
                     </Reveal>
@@ -99,7 +99,7 @@ export default function Hero(){
                 </div>
                 <div className="flex items-center justify-end button1-grid-area">
                 <Reveal >
-                    <a onClick={handleDwonload}  download="CV_Sonja_Pengili.pdf" className="relative cursor-pointer group md:p-4 p-3 text-xs group sm:text-base text-transparent bg-wood-brown rounded-4xl">
+                    <a onClick={handleDwonload}  download="CV.pdf" className="relative cursor-pointer group md:p-4 p-3 text-xs group sm:text-base text-transparent bg-wood-brown rounded-4xl">
                         <motion.div className="absolute group-hover:bg-salmon group-active:bg-salmon transition-[background] duration-150 ease-in-out z-10 bottom-1/2 w-fit md:px-[0.85rem] px-[0.65rem] h-[90%] -translate-x-2/7 sm:-translate-x-1/3 flex items-center whitespace-nowrap translate-y-1/2 right-[1%]  text-xs sm:text-base text-white bg-light-pink rounded-4xl"
                             animate={buttonSlide ? {x:`${x}%`} : {x:0}}
                         >View My Portfolio</motion.div>

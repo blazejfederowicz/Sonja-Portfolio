@@ -8,7 +8,7 @@ export default function LoadingScreen(){
     const isInView = useInView(ref)
 
     return(<>
-        <motion.div ref={ref} className={`fixed overflow-hidden z-[1000] bottom-0 inset-0 bg-white`}
+        <motion.div ref={ref} className={`fixed z-[1000] inset-0 bg-white`}
             initial={{y:"0%"}}
             variants = {{
                 show:{y:0},
